@@ -39,6 +39,10 @@ public class Map extends TileManager {
 				int tileNum = mapTileNum[i][col][row];
 				int x = gp.tileSize * col;
 				int y = gp.tileSize * row;
+				if (tile[tileNum] == null) {
+				    System.err.println("Error: tile[" + tileNum + "] not initialized!");
+				}
+
 				g2.drawImage(tile[tileNum].image, x, y, null);
 				
 				col++;

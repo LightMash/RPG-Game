@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import ai.PathFinder;
+import data.SaveLoad;
 import entity.Entity;
 import entity.Player;
 import environment.EnvironmentManager;
@@ -71,6 +72,8 @@ public class GamePanel extends JPanel implements Runnable{
 	public PathFinder pFinder = new PathFinder(this);
 	EnvironmentManager eManager = new EnvironmentManager(this);
 	Map map = new Map(this);
+	SaveLoad saveLoad = new SaveLoad(this);
+	public EntityGenerator eGenerator = new EntityGenerator(this);
 	Thread gameThread;
 	//Entity and Object
 	public Player player = new Player(this, keyH);
@@ -98,6 +101,14 @@ public class GamePanel extends JPanel implements Runnable{
 	public final int mapState = 10;
 	
 	
+	//Area State
+	public int currentArea;
+	public final int outside = 50;
+	public final int indoor = 51;
+	public final int dungeon = 52;
+	public int nextArea ;
+	
+	
 	public GamePanel() {
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
 		this.setBackground(Color.black);
@@ -116,6 +127,7 @@ public class GamePanel extends JPanel implements Runnable{
 		eManager.setup();
 //		playMusic(0);
 		gameState = titleState;
+		currentArea = outside;
 		
 		tempScreen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB_PRE);
 		g2 = (Graphics2D)tempScreen.getGraphics();
@@ -125,21 +137,22 @@ public class GamePanel extends JPanel implements Runnable{
 		}
 		
 	}
-	public void retry() {
+	public void resetGame(boolean restart) {
 		
 		player.setDefaultPosition();
-		player.restoreLifeAndMana();
+		player.restoreStatus();
 		aSetter.setNPC();
 		aSetter.setMonster();
-	}
-	public void restart() {
+		player.resetCounter();
 		
-		player.setDefaultValues();
-		player.setItems();
-		aSetter.setObject();
-		aSetter.setNPC();
-		aSetter.setMonster();
-		aSetter.setInteractiveTile();
+		if(restart == true) {
+			
+			player.setDefaultValues();
+			aSetter.setObject();
+			aSetter.setInteractiveTile();
+			eManager.lighting.resetDay();
+		}
+
 	}
 	public void setFullScreen() {
 		
@@ -417,6 +430,30 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		se.setFile(i);
 		se.play();
+		
+	}
+	public void changeArea() {
+		
+		if(nextArea != currentArea) {
+			
+			stopMusic();
+			
+			if(nextArea == outside) {
+				playMusic(0);
+			}
+			if(nextArea == indoor) {
+				playMusic(18);
+			}
+			if(nextArea == dungeon) {
+				playMusic(19);
+			}
+			
+			aSetter.setNPC();
+		}
+		
+		currentArea = nextArea;
+		aSetter.setMonster();
+		
 		
 	}
 }

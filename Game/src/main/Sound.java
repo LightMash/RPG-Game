@@ -18,21 +18,29 @@ public class Sound {
 	
 	public Sound() {
 		
-		soundURL[0] = getClass().getResource("/sound/BlueBoyAdventure.wav");
-		soundURL[1] = getClass().getResource("/sound/coin.wav");
-		soundURL[2] = getClass().getResource("/sound/powerup.wav");
-		soundURL[3] = getClass().getResource("/sound/unlock.wav");
-		soundURL[4] = getClass().getResource("/sound/fanfare.wav");
-		soundURL[5] = getClass().getResource("/sound/hitmonster.wav");
-		soundURL[6] = getClass().getResource("/sound/receivedamage.wav");
-		soundURL[7] = getClass().getResource("/sound/swingweapon.wav");
-		soundURL[8] = getClass().getResource("/sound/levelup.wav");
-		soundURL[9] = getClass().getResource("/sound/cursor.wav");
-		soundURL[10] = getClass().getResource("/sound/burning.wav");
-		soundURL[11] = getClass().getResource("/sound/cuttree.wav");
-		soundURL[12] = getClass().getResource("/sound/gameover.wav");
-		soundURL[13] = getClass().getResource("/sound/stairs.wav");
-		soundURL[14] = getClass().getResource("/sound/sleep.wav");
+		soundURL[0] = getClass().getResource("/sounds/BlueBoyAdventure (1).wav");
+		soundURL[1] = getClass().getResource("/sounds/coin.wav");
+		soundURL[2] = getClass().getResource("/sounds/powerup.wav");
+		soundURL[3] = getClass().getResource("/sounds/unlock.wav");
+		soundURL[4] = getClass().getResource("/sounds/fanfare.wav");
+		soundURL[5] = getClass().getResource("/sounds/hitmonster.wav");
+		soundURL[6] = getClass().getResource("/sounds/receivedamage.wav");
+		soundURL[7] = getClass().getResource("/sounds/swingweapon.wav");
+		soundURL[8] = getClass().getResource("/sounds/levelup.wav");
+		soundURL[9] = getClass().getResource("/sounds/cursor.wav");
+		soundURL[10] = getClass().getResource("/sounds/burning.wav");
+		soundURL[11] = getClass().getResource("/sounds/cuttree.wav");
+		soundURL[12] = getClass().getResource("/sounds/gameover.wav");
+		soundURL[13] = getClass().getResource("/sounds/stairs.wav");
+		soundURL[14] = getClass().getResource("/sounds/sleep.wav");
+		soundURL[15] = getClass().getResource("/sounds/blocked.wav");
+		soundURL[16] = getClass().getResource("/sounds/parry.wav");
+		soundURL[17] = getClass().getResource("/sounds/speak.wav");
+		soundURL[18] = getClass().getResource("/sounds/Merchant.wav");
+		soundURL[19] = getClass().getResource("/sounds/Dungeon.wav");
+		soundURL[20] = getClass().getResource("/sounds/chipwall.wav");
+		soundURL[21] = getClass().getResource("/sounds/dooropen.wav");
+		
 	}
 	public void setFile(int i) {
 		try {

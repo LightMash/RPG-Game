@@ -7,7 +7,8 @@ import main.GamePanel;
 
 public class OBJ_Heart extends Entity{
 
-GamePanel gp;
+	GamePanel gp;
+	public static final String objName = "Heart";
 
 	public OBJ_Heart(GamePanel gp) {
 		
@@ -16,7 +17,7 @@ GamePanel gp;
 		
 		type = type_pickupOnly;
 		value = 2;
-		name = "Heart";
+		name = objName;
 		down1 = setup("/objects/banana_full",gp.tileSize,gp.tileSize);
 		image = setup("/objects/banana_full",gp.tileSize,gp.tileSize);
 		image2 = setup("/objects/banana_half",gp.tileSize,gp.tileSize);

@@ -8,7 +8,7 @@ import object.OBJ_Sword_Normal;
 public class KeyHandler implements KeyListener {
 	
 	GamePanel gp;
-	public boolean upPressed,downPressed,leftPressed,rightPressed, enterPressed, shotKeyPressed;
+	public boolean upPressed,downPressed,leftPressed,rightPressed, enterPressed, shotKeyPressed, spacePressed;
 	//Debug
 	
 	 boolean checkDrawTime = false;
@@ -81,7 +81,9 @@ public class KeyHandler implements KeyListener {
 				
 				}
 				if(gp.ui.commandNum == 1) {
-					
+					gp.saveLoad.load();
+					gp.gameState = gp.playState;
+					gp.playMusic(0);
 				}
 				if(gp.ui.commandNum == 2) {
 					System.exit(0);
@@ -110,7 +112,7 @@ public class KeyHandler implements KeyListener {
 					gp.player.dexterity = 1; // Defense
 					gp.player.attack = gp.player.getAttack();
 					gp.player.defense = gp.player.getDefense();
-					gp.playMusic (0);
+					gp.playMusic(0);
 					gp.gameState = gp.playState;
 				}
 				if(gp.ui.commandNum == 1) {
@@ -121,7 +123,7 @@ public class KeyHandler implements KeyListener {
 					gp.player.dexterity = 2; // Defense
 					gp.player.attack = gp.player.getAttack();
 					gp.player.defense = gp.player.getDefense();
-					gp.playMusic (0);
+					gp.playMusic(0);
 					gp.gameState = gp.playState;
 				}
 				if(gp.ui.commandNum == 2) {
@@ -134,7 +136,7 @@ public class KeyHandler implements KeyListener {
 					gp.player.mana = gp.player.maxMana;
 					gp.player.attack = gp.player.getAttack();
 					gp.player.defense = gp.player.getDefense();
-					gp.playMusic (0);
+					gp.playMusic(0);
 					gp.gameState = gp.playState;
 				}
 				if(gp.ui.commandNum == 3) {
@@ -185,6 +187,9 @@ public class KeyHandler implements KeyListener {
 				gp.map.miniMapOn = false;
 			}
 		}
+		if(code == KeyEvent.VK_SPACE) {
+			spacePressed = true;
+		}
 	}
 	public void pauseState(int code) {
 		
@@ -195,7 +200,7 @@ public class KeyHandler implements KeyListener {
 	public void dialogueState(int code) {
 		
 		if(code == KeyEvent.VK_ENTER) {
-			gp.gameState = gp.playState;
+			enterPressed = true;
 		}
 	}
 	public void characterState(int code) {
@@ -286,13 +291,13 @@ public class KeyHandler implements KeyListener {
 		if(code == KeyEvent.VK_ENTER) {
 			if(gp.ui.commandNum == 0) {
 				gp.gameState = gp.playState;
-				gp.retry();
+				gp.resetGame(false);
 				gp.playMusic(0);
 			}
 			else if(gp.ui.commandNum == 1) {
 				gp.ui.titleScreenState = 0;
 				gp.gameState = gp.titleState;
-				gp.restart();
+				gp.resetGame(true);
 			}
 		}
 	}
@@ -413,6 +418,11 @@ public class KeyHandler implements KeyListener {
 		if(code == KeyEvent.VK_F) {
 			shotKeyPressed = false;
 		}
+		if(code == KeyEvent.VK_SPACE) {
+			spacePressed = false;
+		}
+		
+		
 		
 	}
 

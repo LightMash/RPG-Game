@@ -22,7 +22,7 @@ public class MON_GreenSlime extends Entity {
 		name = "Green Slime";
 		defaultSpeed = 1;
 		speed = defaultSpeed;
-		maxLife = 6;
+		maxLife = 4;
 		life = maxLife;
 		attack = 3;
 		defense = 0;
@@ -62,7 +62,7 @@ public class MON_GreenSlime extends Entity {
 			searchPath(getGoalCol(gp.player), getGoalRow(gp.player));
 			
 			//Check if it shoots a projectile
-			checkShootOrNot(200, 30);
+//			checkShootOrNot(200, 30);
 		}
 		else {
 			//Check if it starts chasing
