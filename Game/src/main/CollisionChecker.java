@@ -69,6 +69,8 @@ public class CollisionChecker {
 		
 		int index = 999;
 		
+		
+		
 		String direction = entity.direction;
 		if(entity.knockBack == true) {
 			direction = entity.knockBackDirection;

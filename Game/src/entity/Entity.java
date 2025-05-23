@@ -380,11 +380,11 @@ public class Entity {
 			shotAvailableCounter = 0;
 		}
 	}
-	public void getRandomDirection() {
+	public void getRandomDirection(int interval) {
 		
 		actionLockCounter++;
 		
-		if(actionLockCounter == 120) {
+		if(actionLockCounter == interval) {
 			
 			Random random = new Random();
 			int i = random.nextInt(100) + 1; // Picup a number from 1 to 100
@@ -578,7 +578,7 @@ public class Entity {
 						if(spriteNum == 2) {image = up2;}
 				}	
 					if(attacking == true) {
-						tempScreenY = screenY - gp.tileSize;
+						tempScreenY = screenY - up1.getHeight();
 						if(spriteNum == 1) {image = attackUp1;}
 						if(spriteNum == 2) {image = attackUp2;}
 				}
@@ -599,7 +599,7 @@ public class Entity {
 						if(spriteNum == 2) {image = left2;}
 				}
 					if(attacking == true) {
-						tempScreenX = screenX - gp.tileSize;
+						tempScreenX = screenX - left1.getWidth();
 						if(spriteNum == 1) {image = attackLeft1;}
 						if(spriteNum == 2) {image = attackLeft2;}
 				}
